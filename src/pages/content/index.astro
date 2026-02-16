@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Navigation from '../../components/Navigation.astro'
+
+const contents = [
+  {
+    title: 'AI時代のHP制作ガイド',
+    description: 'AIツールを活用したホームページ制作の実践的なガイド。',
+    href: '/content/ai-hp-guide',
+    date: '2026-02-15'
+  },
+  {
+    title: 'AIを活用したSNS戦略設計',
+    description: 'AIツールを使ったSNS運用の効率化と戦略設計の方法。',
+    href: '/content/ai-sns-strategy',
+    date: '2026-02-15'
+  },
+  {
+    title: 'SNSアカウント設計の基本',
+    description: 'ブランディング視点でのSNSアカウント設計と運用の基礎。',
+    href: '/content/sns-account-design',
+    date: '2026-02-15'
+  }
+]
+---
+
+<BaseLayout
+  title="Content | RAFTEL Inc."
+  description="AI活用・データドリブン経営・DX実践ナレッジを発信。起業・新規事業に役立つ実践的な情報をお届けします。"
+  ogImage="/images/og-content.jpg"
+  currentPage="content"
+>
+  <Navigation currentPage="content" />
+
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="page-hero-inner">
+      <h1>Content</h1>
+      <p>AI活用・データドリブン経営・DX実践ナレッジ</p>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="/">RAFTEL</a>
+    <span>/</span>
+    <span>Content</span>
+  </div>
+
+  <!-- Content List -->
+  <main class="content-body">
+    <div class="content-list">
+      {contents.map(content => (
+        <a href={content.href} class="content-item">
+          <time class="content-date">{content.date}</time>
+          <h2 class="content-title">{content.title}</h2>
+          <p class="content-desc">{content.description}</p>
+        </a>
+      ))}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+.page-hero {
+  padding: 140px 40px 80px;
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+
+.page-hero-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.page-hero h1 {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.breadcrumb {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px 40px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: var(--font-en);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb a {
+  transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+  color: var(--accent);
+}
+
+.content-body {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 40px 120px;
+}
+
+.content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.content-item {
+  padding: 32px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s;
+  display: block;
+}
+
+.content-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.content-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: var(--font-en);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.content-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.content-desc {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 120px 24px 60px;
+  }
+
+  .breadcrumb, .content-body {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+</style>

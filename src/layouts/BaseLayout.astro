@@ -1,0 +1,61 @@
+---
+import '../styles/_variables.css'
+import '../styles/_base.css'
+import '../styles/_utilities.css'
+import '../styles/_navigation.css'
+import '../styles/_buttons.css'
+import '../styles/_cards.css'
+import '../styles/_animations.css'
+
+interface Props {
+  title: string
+  description: string
+  ogImage?: string
+  ogType?: string
+  currentPage?: 'home' | 'service' | 'content'
+}
+
+const {
+  title,
+  description,
+  ogImage = '/images/og-home.jpg',
+  ogType = 'website',
+  currentPage = 'home'
+} = Astro.props
+
+const siteUrl = 'https://raftel.co.jp'
+const fullOgImage = `${siteUrl}${ogImage}`
+const canonicalUrl = `${siteUrl}${Astro.url.pathname}`
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+
+  <!-- OGP Meta Tags -->
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content={ogType}>
+  <meta property="og:url" content={canonicalUrl}>
+  <meta property="og:image" content={fullOgImage}>
+  <meta property="og:site_name" content="RAFTEL Inc.">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={fullOgImage}>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Sora:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <slot />
+</body>
+</html>

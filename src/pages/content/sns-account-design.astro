@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Navigation from '../../components/Navigation.astro'
+---
+
+<BaseLayout
+  title="SNSアカウント設計の基本 | RAFTEL Inc."
+  description="ブランディング視点でのSNSアカウント設計と運用の基礎。一貫性のあるブランド体験を構築する方法を解説。"
+  ogImage="/images/og-content.jpg"
+  currentPage="content"
+>
+  <Navigation currentPage="content" />
+
+  <article class="article">
+    <header class="article-header">
+      <div class="breadcrumb">
+        <a href="/">RAFTEL</a>
+        <span>/</span>
+        <a href="/content">Content</a>
+        <span>/</span>
+        <span>SNSアカウント設計の基本</span>
+      </div>
+      <h1 class="article-title">SNSアカウント設計の基本</h1>
+      <time class="article-date">2026-02-15</time>
+    </header>
+
+    <div class="article-body">
+      <section>
+        <h2>はじめに</h2>
+        <p>ブランディング視点でのSNSアカウント設計について、基本から解説します。</p>
+      </section>
+
+      <section>
+        <h2>主なポイント</h2>
+        <ul>
+          <li>ブランドアイデンティティの設定</li>
+          <li>トーン＆マナーの統一</li>
+          <li>ビジュアルガイドラインの策定</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>まとめ</h2>
+        <p>一貫性のあるブランド体験を提供することで、フォロワーとの信頼関係を構築できます。</p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+.article {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 40px 120px;
+}
+
+.breadcrumb {
+  padding: 20px 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: var(--font-en);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.breadcrumb a {
+  transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+  color: var(--accent);
+}
+
+.article-header {
+  margin-bottom: 60px;
+}
+
+.article-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.article-date {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-family: var(--font-en);
+}
+
+.article-body section {
+  margin-bottom: 48px;
+}
+
+.article-body h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+}
+
+.article-body p {
+  line-height: 2;
+  margin-bottom: 24px;
+}
+
+.article-body ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.article-body li {
+  padding-left: 1.5em;
+  margin-bottom: 12px;
+  position: relative;
+  line-height: 1.8;
+}
+
+.article-body li::before {
+  content: "•";
+  position: absolute;
+  left: 0.5em;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .article {
+    padding: 40px 24px 80px;
+  }
+}
+</style>

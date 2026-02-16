@@ -1,0 +1,166 @@
+---
+interface Props {
+  currentPage?: 'home' | 'service' | 'content'
+}
+
+const { currentPage = 'home' } = Astro.props
+---
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">RAFTEL</a>
+    <div class="nav-links" id="navLinks">
+      <a href="/#solution">課題と解決</a>
+      <a href="/#service">サービス</a>
+      <a href="/#profile">代表紹介</a>
+      <a href="/content/">ナレッジ</a>
+      <a href="/#contact" class="nav-contact">お問い合わせ</a>
+    </div>
+    <button class="hamburger"
+            id="hamburger"
+            aria-label="メニューを開く"
+            aria-expanded="false"
+            aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<script>
+  // Hamburger menu with ARIA state management
+  function toggleMenu() {
+    const navLinks = document.getElementById('navLinks')
+    const hamburger = document.getElementById('hamburger')
+    if (!navLinks || !hamburger) return
+
+    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true'
+
+    // Toggle menu
+    navLinks.classList.toggle('active')
+
+    // Update ARIA state
+    hamburger.setAttribute('aria-expanded', String(!isExpanded))
+    hamburger.setAttribute('aria-label', !isExpanded ? 'メニューを閉じる' : 'メニューを開く')
+  }
+
+  // Keyboard support for hamburger menu
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger')
+    if (!hamburger) return
+
+    hamburger.addEventListener('click', toggleMenu)
+
+    hamburger.addEventListener('keydown', function(e) {
+      // Support Enter and Space keys
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault()
+        toggleMenu()
+      }
+
+      // ESC to close menu
+      if (e.key === 'Escape' && this.getAttribute('aria-expanded') === 'true') {
+        toggleMenu()
+      }
+    })
+
+    // Close menu on ESC from anywhere when menu is open
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const hamburger = document.getElementById('hamburger')
+        const navLinks = document.getElementById('navLinks')
+        if (hamburger && navLinks && navLinks.classList.contains('active')) {
+          toggleMenu()
+          hamburger.focus()
+        }
+      }
+    })
+  })
+</script>
+
+<style>
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+}
+
+.nav-links a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  transition: color 0.3s;
+  font-family: var(--font-en);
+  text-transform: uppercase;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-contact {
+  padding: 12px 28px;
+  min-height: 44px;
+  min-width: 120px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--accent);
+  color: var(--accent) !important;
+  border-radius: 4px;
+  transition: all 0.3s;
+  -webkit-text-fill-color: var(--accent) !important;
+  background: transparent !important;
+  font-family: var(--font-en);
+}
+
+.nav-contact:hover {
+  background: var(--accent) !important;
+  color: var(--text-dark) !important;
+  -webkit-text-fill-color: var(--text-dark) !important;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    width: 280px;
+    height: calc(100vh - 80px);
+    background: var(--bg-dark);
+    flex-direction: column;
+    padding: 40px 32px;
+    gap: 24px;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -4px 0 24px rgba(0,0,0,0.3);
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+  }
+}
+</style>

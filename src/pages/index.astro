@@ -1,17 +1,170 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Navigation from '../components/Navigation.astro'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="RAFTEL Inc. | 想いを、仕組みに。"
+  description="コーチング×コンサル×エンジニアリングの三刀流で、ビジョン策定からHP・SNS・集客導線、データ活用まで一気通貫で支援するグロースパートナー。"
+  ogImage="/images/og-home.jpg"
+  currentPage="home"
+>
+  <Navigation currentPage="home" />
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1 class="hero-title reveal">
+        想いを、仕組みに。
+      </h1>
+      <p class="hero-subtitle reveal reveal-delay-1">
+        コーチング × コンサル × エンジニアリングの三刀流<br>
+        ビジョン策定からHP・SNS・集客導線、データ活用まで一気通貫で支援
+      </p>
+      <div class="hero-cta reveal reveal-delay-2">
+        <a href="#service" class="btn btn-primary">サービスを見る</a>
+        <a href="#contact" class="btn btn-secondary">お問い合わせ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Temporary content notice -->
+  <section class="section" style="padding: 120px 0; text-align: center;">
+    <div class="container">
+      <h2 style="font-size: 2rem; margin-bottom: 24px; color: var(--accent);">
+        🚀 Astro環境構築中
+      </h2>
+      <p style="font-size: 1.1rem; line-height: 1.8; max-width: 600px; margin: 0 auto;">
+        プランC (Astro) によるモダン開発環境への移行を進めています。<br>
+        コンポーネント化により、保守性・パフォーマンス・開発効率が大幅に向上します。
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+/* Hero Section */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg-dark);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(11,11,18,0.9) 0%,
+    rgba(11,11,18,0.95) 50%,
+    rgba(11,11,18,1) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 0 24px;
+  max-width: 900px;
+}
+
+.hero-title {
+  font-family: var(--font-ja);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.12em;
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 32px;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  line-height: 1.9;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+  letter-spacing: 0.04em;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 16px 40px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: 0.04em;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--text-dark);
+}
+
+.btn-primary:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 120, 47, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.btn-secondary:hover {
+  background: var(--accent);
+  color: var(--text-dark);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+</style>
+
+<script>
+  // Scroll reveal animation
+  document.addEventListener('DOMContentLoaded', () => {
+    const revealElements = document.querySelectorAll('.reveal')
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed')
+        }
+      })
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    })
+
+    revealElements.forEach(el => revealObserver.observe(el))
+  })
+</script>

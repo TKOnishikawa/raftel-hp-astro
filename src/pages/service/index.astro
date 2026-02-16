@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Navigation from '../../components/Navigation.astro'
+import ServiceCard from '../../components/ServiceCard.astro'
+
+const services = [
+  {
+    tag: 'Quick Launch',
+    title: 'Quick Launch — 3日HP制作プラン',
+    description: '1.5時間の壁打ちで事業の強みを言語化し、プロ品質のHPを3日以内に初稿納品。まずはここから。',
+    price: '&yen;30,000',
+    href: '/service/quick-launch',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80&fm=webp',
+    icon: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4z"/></svg>',
+    delay: 0
+  },
+  {
+    tag: 'Growth Partner',
+    title: 'Growth Partner — 創業3ヶ月集中 デジタル戦略パートナー',
+    description: '想いの言語化からHP制作・SNS・集客導線まで、デジタル領域をすべて整える3ヶ月伴走型プログラム。コーチング×コンサル×エンジニアリングの三刀流で。',
+    price: '&yen;200,000/月 &times; 3ヶ月',
+    href: '/service/growth-partner',
+    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80&fm=webp',
+    icon: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+    delay: 1
+  }
+]
+---
+
+<BaseLayout
+  title="Service | RAFTEL Inc."
+  description="起業・新規事業のデジタル戦略パートナー。ビジョンの言語化からHP・SNS・集客導線まで、一気通貫で支援します。"
+  ogImage="/images/og-service.jpg"
+  currentPage="service"
+>
+  <Navigation currentPage="service" />
+
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="page-hero-inner">
+      <h1>Service</h1>
+      <p>起業・新規事業のデジタル戦略パートナー。ビジョンの言語化からHP・SNS・集客導線まで、一気通貫で支援します。</p>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="/">RAFTEL</a>
+    <span>/</span>
+    <span>Service</span>
+  </div>
+
+  <!-- Service Grid -->
+  <main class="service-body">
+    <div class="service-grid">
+      {services.map(service => (
+        <ServiceCard {...service} />
+      ))}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+/* Page Hero */
+.page-hero {
+  padding: 140px 40px 80px;
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,148,74,0.12) 0%, transparent 65%);
+}
+
+.page-hero-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero h1 {
+  font-family: var(--font-head);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.page-hero p {
+  font-size: 1rem;
+  color: var(--text-on-dark-sub);
+  max-width: 640px;
+  line-height: 1.9;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px 40px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: var(--font-en);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--accent);
+}
+
+/* Service Grid */
+.service-body {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 40px 120px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
+}
+
+/* Service Card - テスト用に直接記述 */
+.service-card {
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1) !important;
+  box-shadow: var(--shadow-sm) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 120px 24px 60px;
+  }
+
+  .breadcrumb {
+    padding: 16px 24px;
+  }
+
+  .service-body {
+    padding: 24px 24px 80px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+  // Scroll reveal animation
+  document.addEventListener('DOMContentLoaded', () => {
+    const revealElements = document.querySelectorAll('.reveal')
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed')
+        }
+      })
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    })
+
+    revealElements.forEach(el => revealObserver.observe(el))
+  })
+</script>

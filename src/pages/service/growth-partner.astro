@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Navigation from '../../components/Navigation.astro'
+---
+
+<BaseLayout
+  title="Growth Partner — 創業3ヶ月集中 デジタル戦略パートナー | RAFTEL Inc."
+  description="ビジョンの言語化からHP・SNS・集客導線まで、デジタル領域をすべて整える3ヶ月伴走型プログラム。コーチング×コンサル×エンジニアリングの三刀流で、想いをそのまま形にします。"
+  ogImage="/images/og-service.jpg"
+  currentPage="service"
+>
+  <Navigation currentPage="service" />
+
+  <!-- Hero -->
+  <header class="page-hero">
+    <div class="page-hero-inner">
+      <h1>Growth Partner</h1>
+      <p class="hero-subtitle">創業3ヶ月集中 デジタル戦略パートナー</p>
+      <p>ビジョンの言語化からHP・SNS・集客導線まで、デジタル領域をすべて整える3ヶ月伴走型プログラム。</p>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="/">RAFTEL</a>
+    <span>/</span>
+    <a href="/service">Service</a>
+    <span>/</span>
+    <span>Growth Partner</span>
+  </div>
+
+  <!-- Content -->
+  <main class="service-detail">
+    <div class="container">
+      <section class="section">
+        <h2>サービス概要</h2>
+        <p>コーチング×コンサル×エンジニアリングの三刀流で、想いを形に。</p>
+        <ul>
+          <li>ビジョンの言語化（コーチング）</li>
+          <li>戦略策定・データ分析（コンサル）</li>
+          <li>HP・SNS・集客導線の構築（エンジニアリング）</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>料金</h2>
+        <p class="price">¥200,000/月 × 3ヶ月</p>
+      </section>
+
+      <section class="section">
+        <h2>お問い合わせ</h2>
+        <p><a href="/#contact" class="btn">お問い合わせフォームへ</a></p>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+.page-hero {
+  padding: 140px 40px 80px;
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  position: relative;
+}
+
+.page-hero-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.page-hero h1 {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 24px;
+  color: var(--accent-light);
+}
+
+.breadcrumb {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px 40px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: var(--font-en);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb a {
+  transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+  color: var(--accent);
+}
+
+.service-detail {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 40px 120px;
+}
+
+.section {
+  margin-bottom: 60px;
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
+.section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.section li {
+  padding-left: 1.5em;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.section li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 40px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 120px 24px 60px;
+  }
+
+  .breadcrumb, .service-detail {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+</style>
