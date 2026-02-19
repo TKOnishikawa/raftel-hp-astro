@@ -1,0 +1,87 @@
+---
+import BaseLayout from './BaseLayout.astro'
+import Navigation from '../components/Navigation.astro'
+
+interface Props {
+  title: string
+  description: string
+  ogImage?: string
+  tag: string
+  headline: string
+  subtitle: string
+  date: string
+  readingTime: string
+  breadcrumbName: string
+  ctaTitle: string
+  ctaDescription: string
+  ctaButtonText: string
+  ctaButtonLink: string
+  jsonLd?: string
+}
+
+const {
+  title,
+  description,
+  ogImage = '/images/og-content.jpg',
+  tag,
+  headline,
+  subtitle,
+  date,
+  readingTime,
+  breadcrumbName,
+  ctaTitle,
+  ctaDescription,
+  ctaButtonText,
+  ctaButtonLink,
+  jsonLd
+} = Astro.props
+---
+
+<BaseLayout title={title} description={description} ogImage={ogImage} ogType="article" currentPage="content">
+  <Navigation currentPage="content" />
+
+  <!-- Breadcrumb -->
+  <nav class="article-breadcrumb" style="padding-top: 80px;">
+    <a href="/">RAFTEL</a>
+    <span>/</span>
+    <a href="/content/">Content</a>
+    <span>/</span>
+    <span>{breadcrumbName}</span>
+  </nav>
+
+  <!-- Article Hero -->
+  <header class="article-hero">
+    <div class="article-hero-inner">
+      <span class="article-tag">{tag}</span>
+      <h1 class="article-title" set:html={headline} />
+      <p class="article-subtitle" set:html={subtitle} />
+      <div class="article-meta">
+        <span>{date}</span>
+        <span>Reading time: {readingTime}</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Article Body -->
+  <main class="article-body">
+    <slot />
+  </main>
+
+  <!-- CTA -->
+  <section class="article-cta">
+    <h3 set:html={ctaTitle} />
+    <p>{ctaDescription}</p>
+    <a href={ctaButtonLink} class="cta-button">
+      {ctaButtonText}
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="article-footer">
+    <span class="article-footer-copy">&copy; 2026 RAFTEL Inc. All Rights Reserved.</span>
+  </footer>
+
+  <!-- Structured Data -->
+  {jsonLd && <script type="application/ld+json" is:inline set:html={jsonLd} />}
+</BaseLayout>

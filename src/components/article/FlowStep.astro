@@ -1,0 +1,24 @@
+---
+interface Props {
+  num: string
+  title: string
+  role?: string
+  isLast?: boolean
+}
+
+const { num, title, role, isLast = false } = Astro.props
+---
+
+<div class="flow-step">
+  <div class="flow-step-line">
+    <div class="flow-step-num">{num}</div>
+    {!isLast && <div class="flow-step-connector"></div>}
+  </div>
+  <div class="flow-step-content">
+    <h3 class="flow-step-title">{title}</h3>
+    {role && <p class="flow-step-role" set:html={role} />}
+    <div class="flow-step-desc">
+      <slot />
+    </div>
+  </div>
+</div>

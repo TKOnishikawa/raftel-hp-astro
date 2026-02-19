@@ -1,0 +1,19 @@
+---
+interface Props {
+  badge: string
+  title: string
+  description: string
+  recommended?: boolean
+}
+
+const { badge, title, description, recommended = false } = Astro.props
+---
+
+<div class:list={['compare-card', { recommended }]}>
+  <p class="compare-card-badge">{badge}</p>
+  <h4>{title}</h4>
+  <p>{description}</p>
+  <ul>
+    <slot />
+  </ul>
+</div>

@@ -1,135 +1,483 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'
-import Navigation from '../../components/Navigation.astro'
+import ArticleLayout from '../../layouts/ArticleLayout.astro'
+import SectionHeader from '../../components/article/SectionHeader.astro'
+import Accordion from '../../components/article/Accordion.astro'
+import FlowStep from '../../components/article/FlowStep.astro'
+import CompareCard from '../../components/article/CompareCard.astro'
+
+const jsonLd = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "1記事から5チャネルへ — AI×SNS集客の全体設計",
+    "description": "HP記事を起点に、X・YouTube・Instagramへ自動展開するAI活用のコンテンツ戦略。",
+    "datePublished": "2026-02-12",
+    "author": { "@type": "Organization", "name": "RAFTEL Inc." },
+    "publisher": { "@type": "Organization", "name": "RAFTEL Inc." }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "RAFTEL", "item": "/" },
+      { "@type": "ListItem", "position": 2, "name": "Content", "item": "/content/" },
+      { "@type": "ListItem", "position": 3, "name": "1記事から5チャネルへ — AI×SNS集客の全体設計" }
+    ]
+  }
+])
 ---
 
-<BaseLayout
-  title="AIを活用したSNS戦略設計 | RAFTEL Inc."
-  description="AIツールを使ったSNS運用の効率化と戦略設計の方法。データドリブンなアプローチで成果を最大化。"
+<ArticleLayout
+  title="1記事から5チャネルへ — AI×SNS集客の全体設計 | RAFTEL Inc."
+  description="HP記事を起点に、X・YouTube・Instagramへ自動展開するAI活用のコンテンツ戦略。起業プロセスそのものをコンテンツにする実践ガイド。"
   ogImage="/images/og-content.jpg"
-  currentPage="content"
+  tag="Content Strategy"
+  headline="1記事から5チャネルへ<br>AI×SNS集客の全体設計"
+  subtitle="HP記事を1本書いたら、あとはAIがX・YouTube・Instagramへ自動展開。<br>起業プロセスそのものをコンテンツにしていく、実践型の集客設計を公開します。"
+  date="2026.02"
+  readingTime="15 min"
+  breadcrumbName="AI×SNS集客の全体設計"
+  ctaTitle="AI×データ活用のご相談、<br>お気軽にどうぞ。"
+  ctaDescription="コンテンツ戦略・SNS集客・AI活用まで、事業の課題に合わせてご提案します。"
+  ctaButtonText="お問い合わせ"
+  ctaButtonLink="/#contact"
+  jsonLd={jsonLd}
 >
-  <Navigation currentPage="content" />
 
-  <article class="article">
-    <header class="article-header">
-      <div class="breadcrumb">
-        <a href="/">RAFTEL</a>
-        <span>/</span>
-        <a href="/content">Content</a>
-        <span>/</span>
-        <span>AIを活用したSNS戦略設計</span>
-      </div>
-      <h1 class="article-title">AIを活用したSNS戦略設計</h1>
-      <time class="article-date">2026-02-15</time>
-    </header>
+  <!-- ===== イントロ ===== -->
+  <section class="content-section">
+    <SectionHeader label="Introduction" title="「発信しなきゃ」のストレスを仕組みで解決する" />
 
-    <div class="article-body">
-      <section>
-        <h2>はじめに</h2>
-        <p>AIツールを活用したSNS運用の効率化と戦略設計について解説します。</p>
-      </section>
+    <p>
+      起業したら「SNSで発信しましょう」と誰もが言う。でも正直、毎日Xに投稿して、YouTubeも撮って、Instagramもやって……と考えると、それだけで一日が終わってしまいそうですよね。
+    </p>
+    <p>
+      そこで僕がたどり着いたのが、<strong>「記事を1本書いたら、残りはAIが全チャネルに展開してくれる」</strong>という仕組み。この記事では、その全体像を設計段階から公開します。
+    </p>
+    <p>
+      ちなみにこの戦略設計自体も、AIとの壁打ちから生まれたもの。まさに「起業プロセスそのものをコンテンツにする」の第一歩です。
+    </p>
 
-      <section>
-        <h2>主なポイント</h2>
-        <ul>
-          <li>コンテンツ生成の自動化</li>
-          <li>投稿スケジュールの最適化</li>
-          <li>エンゲージメント分析</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>まとめ</h2>
-        <p>AIを戦略的に活用することで、SNS運用の効率と効果を同時に高めることができます。</p>
-      </section>
+    <div class="highlight-box">
+      <p><strong>この記事の前提:</strong> すでにHP（自社サイト）は構築済み。前回の記事「<a href="/content/ai-hp-guide" style="color:var(--accent);text-decoration:underline;">AI×プロンプトだけでプロ品質のHPを作る完全ガイド</a>」で、そのプロセスを公開しています。</p>
     </div>
-  </article>
-</BaseLayout>
+  </section>
 
-<style>
-.article {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 60px 40px 120px;
-}
+  <!-- ===== 全体コンセプト ===== -->
+  <section class="content-section">
+    <SectionHeader label="Concept" title="コンセプト: 「やっていること」が最強のコンテンツ" />
 
-.breadcrumb {
-  padding: 20px 0;
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  font-family: var(--font-en);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 40px;
-}
+    <p>
+      よくある企業ブログは「〇〇のやり方5選」みたいなまとめ記事。悪くないけど、誰でも書ける。
+    </p>
+    <p>
+      僕が選んだのは違うアプローチ。<strong>実際に起業していく過程――HP制作、商品設計、SNS戦略、SEO、集客改善――そのリアルなプロセスをそのままコンテンツにする。</strong>
+    </p>
+    <p>
+      「AIを使ってHP作ったよ」ではなく「今まさにこうやって作った。プロンプトはこれ。失敗したのはここ」という実践記録。評論とケーススタディでは、読み手に伝わる解像度がまったく違います。
+    </p>
 
-.breadcrumb a {
-  transition: color 0.2s;
-}
+    <div class="highlight-box">
+      <p><strong>コンテンツの源泉 = 自分の行動。</strong>つまり、事業を前に進めることそのものがコンテンツ制作になる。「発信のために何か別のことをする」必要がないのがこの戦略の本質です。</p>
+    </div>
+  </section>
 
-.breadcrumb a:hover {
-  color: var(--accent);
-}
+  <!-- ===== ターゲットペルソナ ===== -->
+  <section class="content-section">
+    <SectionHeader label="Target Persona" title="誰に届けるのか — ペルソナを解像度高く定義する" />
 
-.article-header {
-  margin-bottom: 60px;
-}
+    <p>
+      「創業者向け」だけでは解像度が低すぎる。届けたい相手を具体的に描けなければ、コンテンツのトーンもチャネル選定もブレる。まずは<strong>「誰のタイムラインに表示されたいか」</strong>を明確にします。
+    </p>
 
-.article-title {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-weight: 800;
-  line-height: 1.4;
-  margin-bottom: 16px;
-}
+    <div class="highlight-box">
+      <p><strong>RAFTELのコアペルソナ:</strong><br>
+      30代〜40代前半 / 非IT出身（営業・企画・サービス業バックグラウンド）/ 1人起業 or 創業メンバー2-3名のスタートアップ / サービス業（コーチ・コンサル・教室・サロン系）/ 月商100万未満 / <strong>「想いはあるが、デジタルで詰まっている」</strong></p>
+    </div>
 
-.article-date {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  font-family: var(--font-en);
-}
+    <p>
+      この層は「AIの情報は溢れているけど、自分の事業にどう落とし込めばいいかわからない」という状態。だからこそ、<strong>実践プロセスをそのまま見せるコンテンツ</strong>が刺さる。理論より「やってみた」が響く層です。
+    </p>
 
-.article-body section {
-  margin-bottom: 48px;
-}
+    <div class="compare-cards">
+      <CompareCard badge="SNSで狙う" title="個人起業家・マイクロスタートアップ" description="上記のコアペルソナ。SNS上での情報収集が習慣化しており、「この人のやり方、真似できそう」という共感導線でリーチできる。" recommended={true}>
+        <li>意思決定が速い（1人 or 少人数）</li>
+        <li>予算は小さいが、投資意欲は高い</li>
+        <li>「伴走型」のサービスを求めている</li>
+        <li>口コミ・紹介での拡散力がある</li>
+      </CompareCard>
+      <CompareCard badge="別チャネルで狙う" title="中堅企業（社員50〜300名）" description="DX推進・データ活用のニーズはあるが、SNSでは意思決定者にリーチしにくい。紹介・セミナー・LinkedIn経由が有効。">
+        <li>稟議プロセスがあり意思決定が遅い</li>
+        <li>単価は高いがリードタイムも長い</li>
+        <li>実績・事例が重視される</li>
+        <li>SNSよりHP・ホワイトペーパーが刺さる</li>
+      </CompareCard>
+    </div>
+  </section>
 
-.article-body h2 {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 24px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--accent);
-}
+  <!-- ===== ポジショニング ===== -->
+  <section class="content-section">
+    <SectionHeader label="Positioning" title="競合の中で、RAFTELはどこに立つか" />
 
-.article-body p {
-  line-height: 2;
-  margin-bottom: 24px;
-}
+    <p>
+      「AI×起業支援」は今もっとも混雑しているポジション。AIツール紹介系YouTuber、プロンプト販売者、AIコンサル……玉石混交の中で、<strong>「このアカウントは違う」と思ってもらえるポジション</strong>を取る必要がある。
+    </p>
+    <p>
+      競合を2軸で整理すると見えてくるものがあります。<strong>Y軸 = 実装力（実際に手を動かせるか）</strong>、<strong>X軸 = 戦略力（ビジネス全体を設計できるか）</strong>。
+    </p>
 
-.article-body ul {
-  list-style: none;
-  padding-left: 0;
-}
+    <Accordion title="競合ポジショニングの4象限">
+      <table class="acc-table">
+        <tr><th></th><th>戦略力：高</th><th>戦略力：低</th></tr>
+        <tr><td><strong>実装力：高</strong></td><td><strong style="color:var(--accent);">RAFTEL</strong><br>戦略設計×データ基盤×AI実装を一人で完結</td><td>フリーランスエンジニア<br>作れるが「何を作るべきか」の提案が弱い</td></tr>
+        <tr><td><strong>実装力：低</strong></td><td>戦略コンサル<br>方向性は示せるが実装は外注頼み</td><td>AI情報インフルエンサー<br>ツール紹介は得意だが戦略も実装もできない</td></tr>
+      </table>
+    </Accordion>
 
-.article-body li {
-  padding-left: 1.5em;
-  margin-bottom: 12px;
-  position: relative;
-  line-height: 1.8;
-}
+    <div class="highlight-box">
+      <p><strong>RAFTELの独自ポジション:</strong> 「戦略設計×データ基盤×AI実装を一人で完結」。アクセンチュア出身の戦略思考と、BigQuery・Python・AIを自分の手で動かせる実装力。この掛け合わせは、個人起業家向けの支援では極めて希少。SNS発信でも<strong>「語るだけでなく、実際に作って見せる」</strong>ことで信頼を獲得する。</p>
+    </div>
+  </section>
 
-.article-body li::before {
-  content: "•";
-  position: absolute;
-  left: 0.5em;
-  color: var(--accent);
-  font-weight: bold;
-}
+  <!-- ===== パイプライン ===== -->
+  <section class="content-section">
+    <SectionHeader label="Pipeline" title="コンテンツ・パイプライン — 1記事が5チャネルに展開される流れ" />
 
-@media (max-width: 768px) {
-  .article {
-    padding: 40px 24px 80px;
-  }
-}
-</style>
+    <p>
+      全体の流れはシンプル。自分がやるのは「記事を書く」ことだけ。あとはAIが変換・展開してくれます。
+    </p>
+
+    <div class="flow-diagram">
+      <FlowStep num="1" title="HP記事を書く" role="人間がやること（唯一の手作業）">
+        <p>実際の作業プロセスを記録しながら記事化。1記事 = 1テーマ。<strong>これがすべてのコンテンツの「原液」になる。</strong></p>
+      </FlowStep>
+      <FlowStep num="2" title="AIが各チャネル用に自動変換" role="Claude / GPTが一括生成">
+        <p>記事テキストを入力 → Xスレッド、YouTube台本、Instagramキャプションなどを自動で生成。</p>
+      </FlowStep>
+      <FlowStep num="3" title="動画・音声を自動生成" role="ElevenLabs + Canva / Gamma">
+        <p>台本 → AI音声ナレーション → スライド動画を自動生成。BGMもAI（Suno）で作れる。</p>
+      </FlowStep>
+      <FlowStep num="4" title="各チャネルに配信" role="最終確認 → 予約投稿" isLast={true}>
+        <p>動画は目視チェック後にアップロード。Xはスケジューリングツールで予約投稿。</p>
+      </FlowStep>
+    </div>
+  </section>
+
+  <!-- ===== チャネル設計 ===== -->
+  <section class="content-section">
+    <SectionHeader label="Channels" title="各チャネルの役割設計" />
+
+    <p>
+      全SNSに同じことを投げるのではなく、それぞれに明確な「役割」を持たせます。水が高い所から低い所に流れるように、認知から信頼構築までの導線を設計する。
+    </p>
+
+    <div class="channel-grid">
+      <div class="channel-card">
+        <div class="channel-card-head">
+          <div class="channel-card-icon hp">HP</div>
+          <h4>HP記事</h4>
+        </div>
+        <p>SEO資産・信頼構築の基盤。検索からの流入を長期的に積み上げる。すべてのコンテンツの「原液」。</p>
+        <div class="card-meta">週1更新 / KPI: 月間PV 2,000（3ヶ月目標）</div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-card-head">
+          <div class="channel-card-icon x">X</div>
+          <h4>X (Twitter)</h4>
+        </div>
+        <p>認知拡大と反応テスト。実名アカウントで信頼を構築し、キャラアカウントでカジュアルに発信テスト。</p>
+        <div class="card-meta">毎日投稿 / KPI: フォロワー500人（3ヶ月目標）</div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-card-head">
+          <div class="channel-card-icon yt">YT</div>
+          <h4>YouTube</h4>
+        </div>
+        <p>ショートで「発見」、通常動画で「深掘り」。自声×AI音声のハイブリッドで量産体制。</p>
+        <div class="card-meta">ショート週2+通常月2 / KPI: 登録者200人（3ヶ月目標）</div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-card-head">
+          <div class="channel-card-icon ig">IG</div>
+          <h4>Instagram</h4>
+        </div>
+        <p>YouTubeショートをそのまま転用。異なるユーザー層へのリーチを広げる。</p>
+        <div class="card-meta">週4投稿 / KPI: フォロワー300人（3ヶ月目標）</div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-card-head">
+          <div class="channel-card-icon" style="background: #0077b5; color: #fff;">in</div>
+          <h4>LinkedIn</h4>
+        </div>
+        <p>アクセンチュア経歴が最も活きるB2Bプラットフォーム。DX戦略・データ活用の専門見解で経営層にリーチ。</p>
+        <div class="card-meta">週2投稿 / KPI: つながり500人（3ヶ月目標）</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== X戦略 ===== -->
+  <section class="content-section">
+    <SectionHeader label="X Strategy" title="X (Twitter) — 2アカウント戦略" />
+
+    <p>
+      Xの運用で意外と大事なのが、<strong>「気軽さ」と「信頼感」のバランス</strong>。毎日の発信は気軽にやりたいけど、実名アカウントでカジュアルすぎるのも違う。そこで2アカウント体制を採用します。
+    </p>
+
+    <div class="compare-cards">
+      <CompareCard badge="最優先 — 即日開始" title="西川 太雄（@tao_nishikawa）" description="実名・実経歴で信頼を構築。HP記事と連動したスレッド投稿、専門見解の発信で「この人に相談したい」を生む。" recommended={true}>
+        <li>信頼構築の最短ルート</li>
+        <li>HP記事のスレッド展開で誘導</li>
+        <li>専門性・実績をストレートに伝える</li>
+        <li>LinkedIn・HPとの連携が自然にできる</li>
+      </CompareCard>
+      <CompareCard badge="2ヶ月目〜 テスト用" title="ラフ（@rafu_note）" description="実名アカウントの運用が安定してから開設。カジュアルなトーンで投稿テストを行い、反応の良いテーマを実名側に展開。">
+        <li>発信のハードルが圧倒的に低い</li>
+        <li>キャラの口調でトーンが安定する</li>
+        <li>失敗談やぶっちゃけ話もしやすい</li>
+        <li>投稿の「反応テスト」の場として機能</li>
+      </CompareCard>
+    </div>
+
+    <Accordion title="2アカウント運用の具体的なフロー">
+      <p><strong>Step 1: 実名アカウントで毎日発信</strong></p>
+      <p>日々の作業で得た知見・発見・実践結果を実名で投稿。AIに下書きを作らせて、専門家としてのトーンに調整。1日2〜3投稿が目安。信頼構築を最優先に。</p>
+      <p style="margin-top:16px;"><strong>Step 2: 反応を分析してテーマを最適化</strong></p>
+      <p>週末にインプレッション・いいね・リプライを確認。反応が良かった投稿のテーマ・切り口をストックし、翌週の投稿計画に反映。</p>
+      <p style="margin-top:16px;"><strong>Step 3: キャラアカウントを開設（2ヶ月目〜）</strong></p>
+      <p>実名アカウントの運用リズムが安定したら、擬人化キャラアカウントを開設。カジュアルな投稿テスト・失敗談の発信に活用。反応の良いテーマは実名側に展開。</p>
+      <p style="margin-top:16px;"><strong>Step 4: HP記事連動スレッド</strong></p>
+      <p>新しいHP記事を公開したら、実名アカウントで5〜8ツイートのスレッドを投稿。記事の要点を凝縮し、最後にHP記事リンクを添える。</p>
+    </Accordion>
+
+    <Accordion title="擬人化キャラの設計ポイント">
+      <p><strong>なぜ擬人化キャラ？</strong></p>
+      <p>実名だと「ちゃんとしたことを言わなきゃ」というプレッシャーで発信頻度が落ちる。キャラなら「今日も実験失敗した〜」みたいなカジュアルな投稿がしやすい。結果として、投稿量が増えて、テストできるネタも増える。</p>
+      <p style="margin-top:16px;"><strong>キャラ設計のコツ:</strong></p>
+      <table class="acc-table">
+        <tr><th>要素</th><th>設計方針</th></tr>
+        <tr><td>名前</td><td>覚えやすく、テーマが想像できる名前</td></tr>
+        <tr><td>口調</td><td>フレンドリーだけど知的。「〜だよね」「〜してみた」系</td></tr>
+        <tr><td>アイコン</td><td>AI画像生成で作成。親しみやすいイラスト系推奨</td></tr>
+        <tr><td>発信テーマ</td><td>AI活用・データ駆動・起業プロセスに特化</td></tr>
+        <tr><td>人格</td><td>好奇心旺盛、失敗も隠さない、実験好き</td></tr>
+      </table>
+      <p style="margin-top:16px;">アイコンはMidjourney/DALL-Eで生成。一貫したビジュアルがあると、タイムラインで認識されやすくなる。</p>
+    </Accordion>
+  </section>
+
+  <!-- ===== 動画戦略 ===== -->
+  <section class="content-section">
+    <SectionHeader label="Video" title="YouTube — AIで動画を「書く」時代" />
+
+    <p>
+      「動画制作」と聞くと身構えてしまいますが、今のAIを使えば、テキスト記事を書くのとほとんど同じ感覚で動画が作れます。撮影も編集技術も不要。
+    </p>
+
+    <div class="compare-cards">
+      <CompareCard badge="Recommended" title="ハイブリッド型（自声 + AI音声）" description="通常動画（10-12分）は自分の声で信頼感を構築。ショート（60秒）はAI音声で制作効率を最大化。画面収録+自声でプロセスコンテンツも展開。" recommended={true}>
+        <li>通常動画: 自声で「人となり」が伝わる</li>
+        <li>ショート: AI音声で量産・スピード重視</li>
+        <li>画面収録: 実際の作業プロセスをそのまま見せる</li>
+        <li>字幕はCapCutで自動付与</li>
+      </CompareCard>
+      <CompareCard badge="スケーリング時" title="フルAI音声型" description="全動画をAI音声で制作。通常動画もスライド×AI音声で完全量産体制。制作リソースが限界に達したフェーズ向け。">
+        <li>記事1本から30分で動画3本生成</li>
+        <li>声質・話速をブランドに合わせて固定</li>
+        <li>完全な量産体制で週次配信も可能</li>
+        <li>自声コンテンツとの使い分けが重要</li>
+      </CompareCard>
+    </div>
+
+    <Accordion title="AI動画制作の具体的なツールチェーン">
+      <table class="acc-table">
+        <tr><th>工程</th><th>ツール</th><th>自動化度</th><th>備考</th></tr>
+        <tr><td>記事→台本</td><td>Claude / GPT</td><td>90%</td><td>プロンプトで一発変換</td></tr>
+        <tr><td>台本→音声</td><td>ElevenLabs</td><td>90%</td><td>日本語品質は実用レベル</td></tr>
+        <tr><td>スライド生成</td><td>Gamma / Canva AI</td><td>85%</td><td>テンプレートで統一感</td></tr>
+        <tr><td>BGM生成</td><td>Suno / Udio</td><td>85%</td><td>ロイヤリティフリーで高品質</td></tr>
+        <tr><td>字幕付与</td><td>CapCut</td><td>95%</td><td>自動文字起こし+デザイン</td></tr>
+        <tr><td>サムネイル</td><td>Canva AI</td><td>80%</td><td>テンプレで量産</td></tr>
+      </table>
+      <p style="margin-top:16px;"><strong>フルAI映像生成（Runway / Sora等）について:</strong> 現時点では「ショート動画なら許容範囲、通常動画にはまだ粗い」という評価。スライド×音声型の方がビジネス用途では安定します。ただし進化が速いので、半年後には状況が変わる可能性大。</p>
+    </Accordion>
+
+    <Accordion title="YouTube台本をAIに生成させるプロンプト例">
+      <p><strong>ショート動画（60秒）用:</strong></p>
+      <div class="code-block">以下のHP記事から、YouTubeショート動画の台本を3本作成して。
+
+条件:
+- 1本あたり60秒以内（約180文字）
+- 冒頭3秒でフックとなる問いかけ or 衝撃的な事実
+- 「続きはプロフィールのリンクから」で締める
+- 話し言葉で、テンポよく
+
+記事URL or テキスト:
+（ここに記事を貼り付け）</div>
+      <p style="margin-top:16px;"><strong>通常動画（10分）用:</strong></p>
+      <div class="code-block">以下のHP記事を、YouTube動画の台本に変換して。
+
+条件:
+- 10〜12分の尺（約3,000文字）
+- 構成: フック(30秒) → 結論(30秒) → 本編(8分) → まとめ+CTA(1分)
+- 「〜なんですよね」「〜してみたんですが」等の語り口調
+- 適切な箇所に「ここでスライド切り替え」の指示を入れて
+
+記事URL or テキスト:
+（ここに記事を貼り付け）</div>
+    </Accordion>
+  </section>
+
+  <!-- ===== 自動化の現実 ===== -->
+  <section class="content-section">
+    <SectionHeader label="Automation" title="自動化のリアル — 何ができて、何に人間が必要か" />
+
+    <p>
+      「全部AIに任せたい」という気持ちはわかります（僕もそうです）。ただ、正直に言うと、完全自動化にはまだ限界がある。大事なのは<strong>「どこまで自動化できるか」を正確に知って、人間の時間を最もインパクトの大きい場所に集中させる」</strong>こと。
+    </p>
+
+    <Accordion title="自動化レベル一覧（工程別の正直な評価）">
+      <table class="acc-table">
+        <tr><th>工程</th><th>AI自動化度</th><th>人間の関与</th></tr>
+        <tr><td>記事→Xスレッド変換</td><td><span class="mini-tag">95%</span></td><td>トーン最終チェック</td></tr>
+        <tr><td>記事→YouTube台本</td><td><span class="mini-tag">90%</span></td><td>フック部分の微調整</td></tr>
+        <tr><td>台本→AI音声合成</td><td><span class="mini-tag">90%</span></td><td>初期設定のみ</td></tr>
+        <tr><td>スライド動画生成</td><td><span class="mini-tag teal">85%</span></td><td>テンプレ初期構築</td></tr>
+        <tr><td>BGM生成</td><td><span class="mini-tag teal">85%</span></td><td>雰囲気の選択</td></tr>
+        <tr><td>サムネイル生成</td><td><span class="mini-tag teal">80%</span></td><td>ブランド整合チェック</td></tr>
+        <tr><td>投稿スケジュール管理</td><td><span class="mini-tag">95%</span></td><td>初期設定のみ</td></tr>
+      </table>
+      <p style="margin-top:16px;"><strong>人間がやるべきこと（代替不可）:</strong></p>
+      <p>・記事の企画・執筆 — 実体験がコンテンツの核。ここがAIだとバレる</p>
+      <p>・動画の最終チェック — 5分の目視確認で品質事故を防ぐ</p>
+      <p>・コメント返信 — 人間味が信頼につながる。下書きはAI、投稿は手動</p>
+    </Accordion>
+  </section>
+
+  <!-- ===== コンバージョンファネル ===== -->
+  <section class="content-section">
+    <SectionHeader label="Conversion" title="SNS → HP → リード獲得 → 商談 — ファネル全体像" />
+
+    <p>
+      SNSで認知を取っても、そこから売上につながらなければ意味がない。<strong>「フォロワー数」ではなく「商談数」をゴールに逆算した導線設計</strong>が必要です。
+    </p>
+
+    <div class="flow-diagram">
+      <FlowStep num="1" title="SNS認知" role="X・YouTube・Instagram・LinkedIn">
+        <p>各チャネルで「この人、面白いことやってるな」という認知を獲得。プロフィールにHP記事リンクを設置。</p>
+      </FlowStep>
+      <FlowStep num="2" title="HP記事で深掘り" role="SEO + SNS流入">
+        <p>実践プロセスの詳細記事で「この人は本物だ」という信頼を構築。記事末尾にリードマグネットへの誘導を設置。</p>
+      </FlowStep>
+      <FlowStep num="3" title="リードマグネット獲得" role="PDF・チェックリスト等の無料コンテンツ">
+        <p>メールアドレスと引き換えに価値あるコンテンツを提供。ここで「見込み客リスト」が蓄積される。</p>
+      </FlowStep>
+      <FlowStep num="4" title="無料相談 → 商談" role="ナーチャリング → 個別対応" isLast={true}>
+        <p>メールで追加価値を提供し、タイミングが来たら無料相談へ誘導。相談から商談への転換を狙う。</p>
+      </FlowStep>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>なぜリードマグネットが必要か:</strong> 「無料相談」だけでは心理障壁が高い。まず「起業1年目のデジタル基盤チェックリスト」PDFなどの無料コンテンツでメールアドレスを獲得し、そこからナーチャリング（＝信頼関係を段階的に構築）して無料相談へ誘導する。<strong>いきなり売り込まない。まず与える。</strong></p>
+    </div>
+  </section>
+
+  <!-- ===== エンゲージメント ===== -->
+  <section class="content-section">
+    <SectionHeader label="Engagement" title="双方向コミュニケーション — 発信だけでは足りない" />
+
+    <p>
+      SNSは「放送局」ではない。<strong>一方的に発信するだけでは、フォロワーは増えても「ファン」にはならない。</strong>双方向のコミュニケーションを仕組みとして組み込むことで、認知→信頼→相談のサイクルを加速させます。
+    </p>
+
+    <Accordion title="エンゲージメント施策の詳細ルール">
+      <p><strong>X Spaces（月1回）</strong></p>
+      <p>「起業あるある相談会」30分。テーマを事前にXで告知し、リアルタイムで質問に回答。録音をYouTubeにも転用可能。ハードルを下げるために最初は30分・少人数でスタート。</p>
+
+      <p style="margin-top:16px;"><strong>コメント返信ルール</strong></p>
+      <p>全プラットフォーム共通: <strong>24時間以内に全返信</strong>。下書きはAIに作らせてOKだが、投稿は必ず目視確認。「ありがとうございます」だけの定型文は避け、相手の内容に触れた一言を添える。</p>
+
+      <p style="margin-top:16px;"><strong>DM導線フロー</strong></p>
+      <p>質問DM → 丁寧に回答 → 「もう少し詳しくお話しできますよ。よければ無料壁打ちどうですか？」→ HP無料相談ページへ誘導。<strong>売り込まず、自然な流れで導線を作る。</strong></p>
+
+      <p style="margin-top:16px;"><strong>コラボレーション</strong></p>
+      <p>月5通のコラボDM提案。同ジャンル（AI活用・起業・DX）のアカウントに「一緒にSpacesしませんか」「記事で紹介させてください」等。相互フォロワー獲得と信頼構築を狙う。</p>
+    </Accordion>
+  </section>
+
+  <!-- ===== コンテンツロードマップ ===== -->
+  <section class="content-section">
+    <SectionHeader label="Roadmap" title="コンテンツ・ロードマップ — 起業プロセスがそのまま記事になる" />
+
+    <p>
+      「何を書けばいいかわからない」という悩みとは無縁。なぜなら、起業で実際にやることがそのまま記事テーマになるから。時系列に沿って自然にコンテンツが生まれていく設計です。
+    </p>
+
+    <div class="flow-diagram">
+      <FlowStep num="01" title="AI×プロンプトでプロ品質HP" role='<span class="mini-tag">公開済み</span>'>
+        <p>コーディング知識ゼロからのHP制作プロセスを全公開。</p>
+      </FlowStep>
+      <FlowStep num="02" title="AI×SNS集客の全体設計" role='<span class="mini-tag">この記事</span>'>
+        <p>1記事→5チャネル展開の仕組みとX2アカウント戦略。</p>
+      </FlowStep>
+      <FlowStep num="03" title="AIと壁打ちして商品コンセプトを磨く" role='<span class="mini-tag teal">次回予定</span>'>
+        <p>AIに100回壁打ちして商品設計を研ぎ澄ます方法。</p>
+      </FlowStep>
+      <FlowStep num="04" title="構造化データ×AI記事でSEOを狙う" role='<span class="mini-tag teal">予定</span>'>
+        <p>技術的SEOの設計とAI記事の最適化戦略。</p>
+      </FlowStep>
+      <FlowStep num="05" title="SNS運用の完全自動化オペレーション" role='<span class="mini-tag teal">予定</span>' isLast={true}>
+        <p>記事公開→全チャネル配信の自動化パイプライン構築記。</p>
+      </FlowStep>
+    </div>
+
+    <p>
+      ポイントは、「記事を書くために事業を止める」のではなく、<strong>「事業を進めた結果として記事が生まれる」</strong>サイクル。このリズムができれば、コンテンツ制作が負荷ではなく、事業推進のアクセラレーターになります。
+    </p>
+  </section>
+
+  <!-- ===== 原則 ===== -->
+  <div class="principle-box">
+    <p>
+      <span class="em">記事は1本だけ、本気で書く。</span><br>
+      残りは、AIが全チャネルに届けてくれる。<br><br>
+      「やっていること」をそのまま発信する。<br>
+      それが最もリアルで、最も<span class="em">刺さるコンテンツ</span>になる。
+    </p>
+  </div>
+
+  <!-- ===== 実装ロードマップ ===== -->
+  <section class="content-section">
+    <SectionHeader label="Implementation" title="実装の優先順位 — まず何から始めるか" />
+
+    <p>
+      戦略を描いたら、あとは順番に実装していくだけ。一気にやろうとせず、効果とハードルのバランスで優先順位をつけます。
+    </p>
+
+    <Accordion title="Phase 1〜3の実装ステップ">
+      <p><strong>Phase 1: 今すぐ（記事→Xスレッド自動生成 + 実名アカウント開設）</strong></p>
+      <p>HP記事をClaude / GPTに渡してXスレッドを自動生成。実名アカウントを開設し、即日から発信開始。ツールの導入なしで今日から始められる。</p>
+      <p style="margin-top:16px;"><strong>Phase 2: 1〜2週間後（LinkedIn開設 + ElevenLabs導入 + YouTube台本体制）</strong></p>
+      <p>LinkedIn開設でB2B層へのリーチを確保。ElevenLabsアカウント開設 → 音声プロファイル設定 → 台本変換プロンプトを確立。テンプレートが固まれば、1本30分で動画化できる体制に。</p>
+      <p style="margin-top:16px;"><strong>Phase 3: 1ヶ月後（キャラアカウント開設 + フル自動パイプライン完成）</strong></p>
+      <p>実名アカウントの運用が安定したら擬人化キャラアカウントを開設。Canvaテンプレート確立 → 動画量産体制 → Buffer/Hootsuiteで予約投稿自動化。ここまで来ると「記事を書く」以外の作業時間がほぼゼロに。</p>
+    </Accordion>
+
+    <Accordion title="ピボット基準 — うまくいかなかったらどうする？">
+      <p>戦略は「立てて終わり」ではない。<strong>定量的な基準を事前に設定し、未達なら即座にアクションを変える。</strong></p>
+      <table class="acc-table">
+        <tr><th>期間</th><th>チェック項目</th><th>未達時のアクション</th></tr>
+        <tr><td>1ヶ月目</td><td>Xフォロワー100人</td><td>投稿テーマ・時間帯を見直し</td></tr>
+        <tr><td>2ヶ月目</td><td>HP問い合わせ1件以上</td><td>CTA・導線を再設計</td></tr>
+        <tr><td>3ヶ月目</td><td>フォロワー500人+問い合わせ5件</td><td>未達チャネルを撤退 or テーマ変更</td></tr>
+        <tr><td>YouTube</td><td>動画平均50回/本未満</td><td>フォーマット変更</td></tr>
+        <tr><td>全体</td><td>3ヶ月で売上ゼロ</td><td>チャネル構成を根本見直し</td></tr>
+      </table>
+      <p style="margin-top:16px;"><strong>重要:</strong> 「頑張ってるのに結果が出ない」を3ヶ月以上続けない。数字が教えてくれるサインを無視しないこと。ピボットは失敗ではなく、<strong>戦略の精度を上げるプロセス</strong>。</p>
+    </Accordion>
+
+    <p>
+      次回の記事では、実際に実名アカウントでX運用を始めたプロセス、あるいは商品設計のAI壁打ちプロセスをお届けする予定です。この記事自体が、まさにロードマップの「02」でした。
+    </p>
+  </section>
+
+</ArticleLayout>

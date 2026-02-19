@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<div class="accordion">
+  <button class="accordion-trigger">
+    <span>{title}</span>
+    <span class="acc-icon">+</span>
+  </button>
+  <div class="accordion-content">
+    <div class="accordion-inner">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+// Accordion toggle — idempotent (safe to include multiple times)
+if (!window.__accordionInit) {
+  window.__accordionInit = true;
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('.accordion-trigger');
+    if (!trigger) return;
+    trigger.closest('.accordion').classList.toggle('open');
+  });
+}
+</script>
